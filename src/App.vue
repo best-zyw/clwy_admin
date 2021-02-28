@@ -1,32 +1,72 @@
 <template>
   <div id="app">
-    <div id="nav">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
-    </div>
-    <router-view/>
+  	<el-container>
+			<el-header>
+
+			<header1 ></header1>
+			</el-header>
+
+			<el-container>
+				<broadside />
+
+				<el-main>
+					<router-view/>
+				</el-main>
+			</el-container>
+
+
+		</el-container>
   </div>
 </template>
 
-<style lang="scss">
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-}
+<script>
 
-#nav {
-  padding: 30px;
-
-  a {
-    font-weight: bold;
-    color: #2c3e50;
-
-    &.router-link-exact-active {
-      color: #42b983;
+	import header1 from "./components/header";
+	import broadside from "./components/broadside";
+    export default {
+    	components:{header1,broadside},
     }
-  }
+</script>
+
+<style lang="scss">
+*{
+  margin: 0;
+  padding: 0;
+}
+	html,body,#app{
+		height: 100%;
+		margin: 0;
+	}
+  	.el-container{
+		height: 100%;
+	}
+#app{
+.el-header{
+  padding: 0;
+}
+.el-menu--horizontal>.el-submenu {
+    float: right;
+}
+.el-aside{
+  background-color: rgb(84, 92, 100);
+}
+.el-menu-item.is-active {
+    background-color: rgb(84, 92, 100);
+}
+.el-submenu__title * {
+    color: white;
+}
+.el-menu-item * {
+    color: white;
+}
+.el-menu-item-group{
+    background-color: rgb(84, 92, 100);
+}
+.el-submenu__title:hover {
+    background-color: black;
+}
+.el-menu-item:hover {
+    background-color: black;
+}
 }
 </style>
