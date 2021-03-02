@@ -177,7 +177,7 @@ export default {
       },
         uploadSuccess(response, file, fileList){
           console.log(response)
-          this.ruleForm.image='http://qn2aflg8e.hd-bkt.clouddn.com/'+response.key
+          this.ruleForm.image='http://qpabv6eiy.hd-bkt.clouddn.com/'+response.key
         },
     Remove(file, fileList) {
       this.ruleForm.image = "";

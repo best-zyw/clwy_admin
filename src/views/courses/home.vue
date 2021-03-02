@@ -99,7 +99,7 @@ export default {
       }else if(val.substr(0,4)=='http'){
           return val
       }else{
-        return 'http://images.canon4ever.com/'+val
+        return 'http://qpabv6eiy.hd-bkt.clouddn.com/'+val
       }
       },
         datetime(data){

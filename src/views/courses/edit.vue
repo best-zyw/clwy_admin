@@ -34,6 +34,7 @@
   :on-remove="Remove"
   :limit=1
   :on-exceed="fileExeced"
+   :file-list="fileList"
   :on-preview="handlePictureCardPreview"
   multiple>
   <i class="el-icon-upload"></i>
@@ -98,6 +99,7 @@ export default {
         },
       ruleForm: {
       },
+          fileList: [{name: '', url: ''}],
       tableData: [],
       userData:[],
       dialogImageUrl: "",
@@ -129,12 +131,20 @@ export default {
     });
     this.axios.get(`admin/courses/${id}`).then(res=>{
         // console.log(res)
+         let image=res.data.Course.image;
         this.ruleForm=res.data.Course
         this.ruleForm.published=!!res.data.Course.published
          this.ruleForm.completed=!!res.data.Course.completed
           this.ruleForm.recommended=!!res.data.Course.recommended
            this.ruleForm.free=!!res.data.Course.free
             this.ruleForm.introductory=!!res.data.Course.introductory
+                    if(image==null){
+                this.fileList=[]
+            }else if(image.substr(0,4)=='http'){
+                this.fileList=[{name: res.data.Course.name, url: res.data.Course.image}]
+            }else{
+                this.fileList=[{name: res.data.Course.name, url:'http://qpabv6eiy.hd-bkt.clouddn.com/'+res.data.Course.image}]
+            }
         
     })
   },
@@ -189,7 +199,7 @@ export default {
       },
         uploadSuccess(response, file, fileList){
           console.log(response)
-          this.ruleForm.image='http://qn2aflg8e.hd-bkt.clouddn.com/'+response.key
+          this.ruleForm.image='http://qpabv6eiy.hd-bkt.clouddn.com/'+response.key
         },
     Remove(file, fileList) {
       this.ruleForm.image = "";
